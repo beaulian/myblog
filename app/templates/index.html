@@ -47,8 +47,8 @@
         
          <section id="search-container">
           <hr class="divider short" />
-          <form id="search-form">
-            <input type="text" name="search" placeholder="python,java,linux..." id="search-field" />
+          <form id="search-form" method="get" action="/search">
+            <input type="text" name="keyword" placeholder="python,java,linux..." id="search-field" />
             <input type="submit" style="display:none;">
           </form>
         </section>
@@ -59,14 +59,16 @@
 </aside>
 <main>
       <section class="content">
-    {% block blogList %}
+    {% block blog %}
+    {% block title %}
 <h1 style="text-align: center;" id="posts-headline">Just Some Writings.</h1>
+{% endblock %}
 <ol id="posts-list">
 {% for blog in blogs %} 
   <li>
     <a href="/blog/{{ blog._id }}">{{ blog.title }}</a>
     <time>{{ blog.time }}</time>
-    <span class="post tags">{{ blog.class_name }}</span>
+    <span class="post tags"><a href="/class/{{ blog.class_name }}">{{ blog.class_name }}</a></span>
   </li>
   {% else %}
         这家伙太懒了，还没有发表过文章
@@ -77,7 +79,7 @@
 {% endif %}
 {% endblock %}
 
-        <footer>
+        <footer style="position:absolute; bottom: 30px;">
   <span class="copyright" style="color: black;">
     &copy; 2016. All rights reserved. Built with <a href="https://github.com/Kikobeats/uno-zen" target="_blank" style="color: black;">Uno Zen</a> under <a href="https://ghost.org/" target="_blank" style="color: black;">Ghost</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特别声明: 本博客的界面采用<a href="http://www.bugzhang.com" style="color: black;">bugzhang</a>大神开发的博客界面.
   </span>

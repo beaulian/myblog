@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block blog %}
+<article class="post tag-shit">
+    <header>
+      <div class="post meta">
+        <time>{{ blog.time }}</time>
+        <span class="post tags">in <a href="/class/{{ blog.class_name }}">{{ blog.class_name }}</a></span>
+      </div>
+        
+        <h1 id="post-title">{{ blog.title }}</h1>
+      </a>
+    </header>
+
+    <div id="post-content" class="post tag-shit">
+     {{ blog.body | safe }}
+    </div>
+
+    <div class="post related">
+      {% if prev_blog %}
+        <a rel="prev" id="prev-btn" class="btn small square" href="/blog/{{ prev_blog._id }}">← {{ prev_blog.title }}</a>
+      {% endif %}
+      {% if next_blog %}
+        <a rel="next" id="next-btn" class="btn small square" href="/blog/{{ next_blog._id }}">{{ next_blog.title }} →</a>
+      {% endif %}
+    </div>
+    </article>
+{% endblock %}

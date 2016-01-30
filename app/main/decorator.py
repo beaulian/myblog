@@ -1,12 +1,15 @@
+# -*- coding: utf-8 -*-
 from flask import request, abort
 from functools import wraps
+from app import mongo
 
 def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        usename = request.args.get("usename", False)
+        username = request.args.get("username", False)
         password = request.args.get("password", False)
-        if usename == "xxx" and password == "xxxx":
+        user = mongo.db.users.find_one_or_404()
+        if username == user["username"] and password == user["password"]:
             pass
         else:
             abort(403)
