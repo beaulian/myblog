@@ -16,6 +16,7 @@ def init():
 def remote_pull():
 	with cd(code_dir):
 		run("git pull")
+		run("nginx -s reload")
 
 def local_pull():
 	local("git pull")
