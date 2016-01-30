@@ -8,6 +8,7 @@ loglevel = 'info'
 accesslog = 'blog_access.log'
 worker_class = 'tornado'
 worker_connections = 1000
+daemon = True
 
 #from gunicorn_reloader import MyReloader
 
