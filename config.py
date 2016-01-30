@@ -6,6 +6,7 @@ PAGE_SIZE = 8
 MONGO_AUTO_START_REQUEST = False
 MONGO_DBNAME = "gavinblog"
 DEBUG = False
+# DEBUG = True
 WTF_CSRF_ENABLED = False
 IMG_PATH = "/home/gavin/Documents/github/myblog/app/static/img/"
 SERVER_IMG_PATH = "/static/img/"
