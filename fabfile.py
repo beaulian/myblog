@@ -13,9 +13,12 @@ def init():
 		run("git clone https://github.com/shenaishiren/myblog.git")
 
 
-def pull():
+def remote_pull():
 	with cd(code_dir):
 		run("git pull")
+
+def local_pull():
+	local("git pull")
 
 
 def prepare():
@@ -23,9 +26,8 @@ def prepare():
 	with cd(code_dir):
 		if not exists(env_dir):
 			run("virtualenv env")
-		run("source env/bin/activate")
-		run("pip install --upgrade pip")
-		run("pip install -r requirements.txt")
+		run("env/bin/pip install --upgrade pip")
+		run("env/bin/pip install -r requirements.txt")
 		run("touch blog_error.log")
 		run("touch blog_access.log")
 
@@ -38,6 +40,5 @@ def init_nginx():
 
 def deploy():
 	with cd(code_dir):
-		run("source env/bin/activate")
-		run("gunicorn manage:app -c gunicorn_deploy.py")
+		run("env/bin/python env/bin/gunicorn manage:app -c gunicorn_deploy.py")
 		run("nginx -s reload")
