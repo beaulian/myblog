@@ -9,18 +9,16 @@ from config import PAGE_SIZE
 
 def get_prev_blog(blog_id):
 	prev_blog = mongo.db.blogs.find({"_id": {"$lt": ObjectId(blog_id)}}).limit(1)
-	if dict(prev_blog):
-		prev_blog = dict(prev_blog)
-		prev_blog["_id"] = str(prev_blog)
+	if prev_blog.count() > 0:
+		prev_blog = list(prev_blog)[0]
 		return prev_blog
 	return None
 
 
 def get_next_blog(blog_id):
 	next_blog = mongo.db.blogs.find({"_id": {"$gt": ObjectId(blog_id)}}).limit(1)
-	if dict(next_blog):
-		next_blog = dict(next_blog)
-		next_blog["_id"] = str(next_blog["_id"])
+	if next_blog.count() > 0:
+		next_blog = list(next_blog)[0]
 		return next_blog
 	return None
 
