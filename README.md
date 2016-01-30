@@ -3,4 +3,4 @@
 - 编辑器采用Simditor富文本编辑器
 - 后端采用Python语言,Flask Web框架
 - 系统架构
--   Linux+Nginx+Gunicorn+MongoDB
+>  Linux+Nginx+Gunicorn+MongoDB
