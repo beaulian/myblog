@@ -43,3 +43,11 @@ def deploy():
 	with cd(code_dir):
 		run("env/bin/python env/bin/gunicorn manage:app -c gunicorn_deploy.py")
 		run("nginx -s reload")
+
+
+def reload():
+	with cd(code_dir):
+		run("git pull")
+		run("kill -9 `ps -ef | grep gunicorn_deploy | awk '{print $2}'`")
+		run("env/bin/python env/bin/gunicorn manage:app -c gunicorn_deploy.py")
+		run("nginx -s reload")
