@@ -16,7 +16,6 @@ def init():
 def remote_pull():
 	with cd(code_dir):
 		run("git pull")
-		run("nginx -s reload")
 
 def local_pull():
 	local("git pull")
@@ -45,9 +44,14 @@ def deploy():
 		run("nginx -s reload")
 
 
-def reload():
+def dynamic_reload():
 	with cd(code_dir):
 		run("git pull")
-		run("kill -9 `ps -ef | grep gunicorn_deploy | awk '{print $2}'`")
+		run("ps -ef | grep gunicorn_deploy | awk '{print $2}' | xargs kill -9")
 		run("env/bin/python env/bin/gunicorn manage:app -c gunicorn_deploy.py")
+		run("nginx -s reload")
+
+def static_reload():
+	with cd(code_dir):
+		run("git pull")
 		run("nginx -s reload")
