@@ -79,8 +79,8 @@ def search_blog():
 	page = request.args.get("page", 1)
 	keyword = request.args.get("keyword", None)
 	condition = {"$or": [
-							{"title": {"$regex": keyword}},
-							{"class_name": {"$regex": keyword}}
+							{"title": {"$regex": keyword, "$options": "i"}},
+							{"class_name": {"$regex": keyword, "$options": "i"}}
 						]
 				} if keyword else None
 	blogs, pagination = get_blogs_pagination(page, condition)
