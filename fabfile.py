@@ -47,7 +47,7 @@ def deploy():
 def dynamic_reload():
 	with cd(code_dir):
 		run("git pull")
-		run("ps -ef | grep gunicorn_deploy | awk '{print $2}' | xargs kill -9")
+		run("ps -ef | grep gunicorn_deploy | grep -v grep | awk '{print $2}' | xargs kill -9")
 		run("env/bin/python env/bin/gunicorn manage:app -c gunicorn_deploy.py")
 		run("nginx -s reload")
 
