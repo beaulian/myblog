@@ -23,6 +23,8 @@ def index(page):
 @main.route('/blog/<string:blog_id>', methods=["GET"])
 def get_blog(blog_id):
 	blog = mongo.db.blogs.find_one_or_404({"_id": ObjectId(blog_id)})
+	blog["class_name"] = blog["class_name"].split(";")
+	print blog["class_name"]
 	prev_blog = get_prev_blog(blog_id)
 	next_blog = get_next_blog(blog_id)
 	mongo.db.blogs.update({'_id': ObjectId(blog_id)}, {'$inc': {'view_count': 1}})
@@ -70,7 +72,7 @@ def delete_blog(blog_id):
 @main.route("/class/<string:class_name>", methods=["GET"])
 def get_blog_by_class(class_name):
 	page = request.args.get("page", 1)
-	blogs, pagination = get_blogs_pagination(page, {"class_name": class_name})
+	blogs, pagination = get_blogs_pagination(page, {"class_name": {"$regex": class_name}})
 	return render_template('classes.html', blogs=blogs, pagination=pagination, class_name=class_name)
 
 

@@ -29,6 +29,9 @@ def get_blogs_pagination(page, condition=None):
 	blog_collections = db_blogs.skip(skip_num) \
 							   .limit(PAGE_SIZE) \
 							   .sort("time", DESCENDING)
-	blogs = list(blog_collections)
+	blogs = []
+	for blog in blog_collections:
+		blog["class_name"] = blog["class_name"].split(";")
+		blogs.append(blog)
 	pagination = Pagination(page=page, total=db_blogs.count(), per_page=PAGE_SIZE, bs_version='3')
 	return [blogs, pagination]

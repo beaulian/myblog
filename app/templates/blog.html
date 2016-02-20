@@ -5,7 +5,7 @@
     <header>
       <div class="post meta">
         <time>{{ blog.time }}</time>
-        <span class="post tags">in <a href="/class/{{ blog.class_name }}">{{ blog.class_name }}</a></span>
+        <span class="post tags">{% for classf in blog.class_name %}<a href="/class/{{ classf }}">{{ classf }}</a>&nbsp;{% endfor %}</span>
       </div>
         
         <h1 id="post-title">{{ blog.title }}</h1>
