@@ -24,7 +24,7 @@ def index(page):
 def get_blog(blog_id):
 	blog = mongo.db.blogs.find_one_or_404({"_id": ObjectId(blog_id)})
 	blog["class_name"] = blog["class_name"].split(";")
-	print blog["class_name"]
+#	print blog["class_name"]
 	prev_blog = get_prev_blog(blog_id)
 	next_blog = get_next_blog(blog_id)
 	mongo.db.blogs.update({'_id': ObjectId(blog_id)}, {'$inc': {'view_count': 1}})
