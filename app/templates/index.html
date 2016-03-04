@@ -75,8 +75,11 @@
         这家伙太懒了，还没有发表过文章
 {% endfor %}
 </ol>
-{% if pagination %}
-    <nav>{{ pagination.links }}</nav>
+{% if pagination and pagination.page < pagination.total_pages %}
+    <nav class="pagination">
+    <span class="posts index">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
+    <a rel="prev" class="posts older btn small" href="/blog/page/{{ pagination.page+1 }}">Older Posts &rarr;</a>
+  </nav>
 {% endif %}
 {% endblock %}
 
