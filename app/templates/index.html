@@ -80,7 +80,7 @@
     <span class="posts index">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
     <a rel="prev" class="posts older btn small" href="/blog/page/{{ pagination.page+1 }}">Older Posts &rarr;</a>
   </nav>
-{% else %}
+{% elif pagination.page-1 > 0 %}
 <nav class="pagination">
     <span class="posts index">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
     <a rel="prev" class="posts older btn small" href="/blog/page/{{ pagination.page-1 }}">&larr; Newer Posts</a>
