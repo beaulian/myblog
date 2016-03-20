@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-SECRET_KEY = os.urandom(24)
+SECRET_KEY = "hard to guess"
 PAGE_SIZE = 6
 MONGO_AUTO_START_REQUEST = False
 MONGO_DBNAME = "gavinblog"
