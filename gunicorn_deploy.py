@@ -3,12 +3,12 @@ bind = "127.0.0.1:8085"
 backlog = 2048
 timeout = 60
 keepalive = 2
-errorlog = 'blog_error.log'
-loglevel = 'debug'
-accesslog = 'blog_access.log'
-worker_class = 'tornado'
+#errorlog = 'blog_error.log'
+#loglevel = 'debug'
+#accesslog = 'blog_access.log'
+worker_class = 'gevent'
 worker_connections = 1000
-daemon = True
+#daemon = True
 
 #from gunicorn_reloader import MyReloader
 

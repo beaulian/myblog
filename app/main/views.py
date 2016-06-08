@@ -102,4 +102,7 @@ def upload():
 		return jsonify({"success": False, "msg": "please upload file"})
 
 
-
+#@main.after_request
+#def after_request(response):
+#	mongo.cx.close()
+#	return response
