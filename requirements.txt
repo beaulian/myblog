@@ -12,7 +12,7 @@ cryptography==0.9
 cssselect==0.9.1
 Django==1.9.1
 dominate==2.1.16
-ecdsa==0.13
+ecdsa==0.13.3
 enum34==1.0.4
 Fabric==1.10.2
 Flask==0.10.1
