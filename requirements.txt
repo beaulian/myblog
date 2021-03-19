@@ -32,7 +32,7 @@ image==1.4.4
 ipaddress==1.0.7
 IPy==0.81
 itsdangerous==0.24
-Jinja2==2.8
+Jinja2==2.11.3
 lxml==3.3.3
 M2Crypto==0.21.1
 MarkupSafe==0.23
