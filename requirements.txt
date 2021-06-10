@@ -10,7 +10,7 @@ colorama==0.2.5
 crypto==1.4.1
 cryptography==0.9
 cssselect==0.9.1
-Django==1.9.1
+Django==2.2.24
 dominate==2.1.16
 ecdsa==0.13
 enum34==1.0.4
