@@ -6,4 +6,4 @@
 ### 系统架构
 > Linux+Nginx+Gunicorn+MongoDB
 
-PS: 网站界面参考了[bugzhang](http://www.bugzhang.com)大神的界面风格
+PS: 网站界面参考了bugzhang大神的界面风格
